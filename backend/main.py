@@ -11,11 +11,7 @@ app = FastAPI(
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:3000",
-        "https://legislative.netlify.app",
-        "https://fanciful-profiterole-936b4e.netlify.app",
-    ],
+    allow_origins=["*"],  # Разрешить вообще всем
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
