@@ -19,7 +19,7 @@ export default function Home() {
 
   return (
     <div className="flex flex-1 items-center justify-center">
-      <p className="text-gray-400">Загрузка...</p>
+  <p className="text-gray-400">Жүктелуде...</p>
     </div>
   );
 }

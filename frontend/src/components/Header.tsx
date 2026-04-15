@@ -25,7 +25,7 @@ export default function Header() {
               onClick={logout}
               className="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50 hover:border-slate-300"
             >
-              Выйти
+              Шығу
             </button>
           </div>
         )}
