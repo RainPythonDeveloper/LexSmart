@@ -2,11 +2,11 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
-# Добавляем системные библиотеки для работы с графикой и документами
+# Обновленный список библиотек для новых версий Debian
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
     libpq-dev \
-    libgl1-mesa-glx \
+    libgl1 \
     libglib2.0-0 && \
     rm -rf /var/lib/apt/lists/*
 
@@ -17,5 +17,5 @@ COPY . .
 
 EXPOSE 8000
 
-# Если твой главный файл лежит в папке app, путь должен быть "app.main:app"
+# Убедись, что путь к приложению верный (app.main или main)
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
