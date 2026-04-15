@@ -18,5 +18,5 @@ COPY . .
 EXPOSE 8000
 
 # Убедись, что путь к приложению верный (app.main или main)
-# CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
-CMD ["python", "main.py"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+# CMD ["python", "main.py"]
