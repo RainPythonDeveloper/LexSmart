@@ -23,7 +23,7 @@ export default function LoginPage() {
       setToken(res.access_token);
       router.push("/dashboard");
     } catch (err: unknown) {
-      setError(err instanceof Error ? err.message : "Ошибка входа");
+      setError(err instanceof Error ? err.message : "Кіру қатесі");
     } finally {
       setSubmitting(false);
     }
@@ -33,14 +33,14 @@ export default function LoginPage() {
     <div className="flex flex-1 items-center justify-center px-4 py-12">
       <div className="w-full max-w-sm">
         {/* Logo */}
-        <div className="mb-8 text-center">
+    <div className="mb-8 text-center">
           <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-indigo-600 shadow-lg shadow-indigo-200">
             <svg className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25zM6.75 12h.008v.008H6.75V12zm0 3h.008v.008H6.75V15zm0 3h.008v.008H6.75V18z" />
             </svg>
           </div>
           <h1 className="text-2xl font-bold text-slate-900">LexSmart Kazakhstan</h1>
-          <p className="mt-1 text-sm text-slate-500">Войдите в свой аккаунт</p>
+          <p className="mt-1 text-sm text-slate-500">Есептік жазбаға кіріңіз</p>
         </div>
 
         {/* Card */}
@@ -57,7 +57,7 @@ export default function LoginPage() {
 
             <div>
               <label htmlFor="email" className="mb-1.5 block text-sm font-medium text-slate-700">
-                Email
+                Электрондық пошта
               </label>
               <input
                 id="email"
@@ -72,7 +72,7 @@ export default function LoginPage() {
 
             <div>
               <label htmlFor="password" className="mb-1.5 block text-sm font-medium text-slate-700">
-                Пароль
+                Құпия сөз
               </label>
               <input
                 id="password"
@@ -91,15 +91,15 @@ export default function LoginPage() {
               disabled={submitting}
               className="mt-2 w-full rounded-lg bg-indigo-600 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-60"
             >
-              {submitting ? "Вход..." : "Войти"}
+              {submitting ? "Кіру..." : "Кіру"}
             </button>
           </form>
         </div>
 
         <p className="mt-5 text-center text-sm text-slate-500">
-          Нет аккаунта?{" "}
+          Тіркелгіңіз жоқ па?{" "}
           <Link href="/register" className="font-medium text-indigo-600 hover:text-indigo-700">
-            Зарегистрироваться
+            Тіркелу
           </Link>
         </p>
       </div>

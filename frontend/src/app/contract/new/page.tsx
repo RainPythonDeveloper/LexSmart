@@ -85,8 +85,8 @@ export default function NewContractPage() {
       <main className="mx-auto w-full max-w-3xl flex-1 px-4 py-8">
         {/* Page title */}
         <div className="mb-6">
-          <h1 className="text-xl font-bold text-slate-900">Новый трудовой договор</h1>
-          <p className="mt-1 text-sm text-slate-500">Заполните данные — система проверит соответствие ТК РК</p>
+          <h1 className="text-xl font-bold text-slate-900">Жаңа еңбек шарты</h1>
+          <p className="mt-1 text-sm text-slate-500">Мәліметтерді толтырыңыз — жүйе ҚР Еңбек кодексіне сәйкестігін тексереді</p>
         </div>
 
         {error && (
@@ -102,7 +102,7 @@ export default function NewContractPage() {
           <form onSubmit={handleValidate} className="space-y-5">
             {/* Org type */}
             <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-              <p className="mb-3 text-sm font-semibold text-slate-700">Тип организации</p>
+              <p className="mb-3 text-sm font-semibold text-slate-700">Ұйым түрі</p>
               <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
                 {(["IP", "TOO"] as const).map((t) => (
                   <label
@@ -121,36 +121,36 @@ export default function NewContractPage() {
                       onChange={() => update("org_type", t)}
                       className="sr-only"
                     />
-                    {t === "IP" ? "ИП (IP)" : "ТОО (TOO)"}
+                    {t === "IP" ? "ЖШС (IP)" : "ТОО (TOO)"}
                   </label>
                 ))}
               </div>
             </div>
 
             {/* Employer */}
-            <Section title="Работодатель">
+            <Section title="Жұмыс беруші">
               <div className="grid gap-4 sm:grid-cols-2">
-                <Field label="Наименование" value={form.employer_name} onChange={(v) => update("employer_name", v)} required placeholder="ИП Иванов или ТОО «Компания»" />
-                <Field label="ИИН / БИН" value={form.employer_iin_bin} onChange={(v) => update("employer_iin_bin", v)} required maxLength={12} minLength={12} placeholder="12 цифр" />
+                <Field label="Атауы" value={form.employer_name} onChange={(v) => update("employer_name", v)} required placeholder="ЖШС Иванов немесе ТОО «Компания»" />
+                <Field label="ЖСН / БСН" value={form.employer_iin_bin} onChange={(v) => update("employer_iin_bin", v)} required maxLength={12} minLength={12} placeholder="12 цифр" />
               </div>
-              <Field label="Юридический адрес" value={form.employer_address} onChange={(v) => update("employer_address", v)} required placeholder="г. Алматы, ул. Абая, 1" />
+              <Field label="Заңды мекенжайы" value={form.employer_address} onChange={(v) => update("employer_address", v)} required placeholder="Қ. Алматы, Абай к., 1" />
             </Section>
 
             {/* Employee */}
-            <Section title="Работник">
+            <Section title="Жұмысшы">
               <div className="grid gap-4 sm:grid-cols-2">
-                <Field label="ФИО" value={form.employee_name} onChange={(v) => update("employee_name", v)} required placeholder="Фамилия Имя Отчество" />
-                <Field label="ИИН" value={form.employee_iin} onChange={(v) => update("employee_iin", v)} required maxLength={12} minLength={12} placeholder="12 цифр" />
+                <Field label="Тегі, аты, әкесінің аты" value={form.employee_name} onChange={(v) => update("employee_name", v)} required placeholder="Фамилия Имя Отчество" />
+                <Field label="ЖСН" value={form.employee_iin} onChange={(v) => update("employee_iin", v)} required maxLength={12} minLength={12} placeholder="12 цифр" />
               </div>
-              <Field label="Адрес проживания" value={form.employee_address} onChange={(v) => update("employee_address", v)} required placeholder="г. Алматы, ул. Ленина, 5" />
-              <Field label="Должность" value={form.position} onChange={(v) => update("position", v)} required placeholder="Например: Инженер-программист" />
+              <Field label="Тұратын мекенжайы" value={form.employee_address} onChange={(v) => update("employee_address", v)} required placeholder="Қ. Алматы, Ленин к., 5" />
+              <Field label="Лауазым" value={form.position} onChange={(v) => update("position", v)} required placeholder="Мысалы: Бағдарламашы-инженер" />
             </Section>
 
             {/* Terms */}
-            <Section title="Условия договора">
+            <Section title="Шарттың шарттары">
               <div className="grid gap-4 sm:grid-cols-3">
                 <NumberField
-                  label="Зарплата (KZT)"
+                  label="Жалақы (KZT)"
                   value={form.salary}
                   onChange={(v) => update("salary", v)}
                   min={1}
@@ -158,39 +158,39 @@ export default function NewContractPage() {
                   placeholder="300 000"
                 />
                 <DateField
-                  label="Дата начала"
+                  label="Басталу күні"
                   value={form.start_date}
                   onChange={(v) => update("start_date", v)}
                   required
                 />
                 <DateField
-                  label="Дата окончания"
+                  label="Аяқталу күні"
                   value={form.end_date || ""}
                   onChange={(v) => update("end_date", v || null)}
-                  hint="Оставьте пустым для бессрочного"
+                  hint="Мерзімсіз болса бос қалдырыңыз"
                 />
               </div>
               <div className="grid gap-4 sm:grid-cols-3">
                 <NumberField
-                  label="Испытательный срок (мес)"
+                  label="Сынық мерзімі (ай)"
                   value={form.probation_months}
                   onChange={(v) => update("probation_months", v)}
                   min={0}
                   max={3}
-                  hint="0 — без испытания"
+                  hint="0 — сынақсыз"
                 />
                 <Field
-                  label="Режим работы"
+                  label="Жұмыс режимі"
                   value={form.work_schedule}
                   onChange={(v) => update("work_schedule", v)}
-                  placeholder="5/2, 6/1, сменный..."
+                  placeholder="5/2, 6/1, ауыспалы..."
                 />
                 <NumberField
-                  label="Дней отпуска"
+                  label="Демалыс күндері"
                   value={form.vacation_days}
                   onChange={(v) => update("vacation_days", v)}
                   min={24}
-                  hint="Минимум 24 по ТК РК"
+                  hint="Қазақстанның ЕК бойынша минимум 24 күн"
                 />
               </div>
             </Section>
@@ -198,15 +198,15 @@ export default function NewContractPage() {
             {/* Custom clauses */}
             <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
               <label className="mb-1.5 block text-sm font-semibold text-slate-700">
-                Дополнительные условия
-                <span className="ml-1.5 font-normal text-slate-400">(необязательно)</span>
+                Қосымша шарттар
+                <span className="ml-1.5 font-normal text-slate-400">(міндетті емес)</span>
               </label>
               <textarea
                 rows={3}
                 maxLength={5000}
                 value={form.custom_clauses}
                 onChange={(e) => update("custom_clauses", e.target.value)}
-                placeholder="Введите нестандартные условия для проверки на соответствие ТК РК..."
+                placeholder="Қазақстанның Еңбек кодексіне сәйкестігін тексеру үшін ерекше шарттарды енгізіңіз..."
                 className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-900 placeholder-slate-400 transition-colors focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
               />
             </div>
@@ -219,10 +219,10 @@ export default function NewContractPage() {
               {submitting ? (
                 <span className="flex items-center justify-center gap-2">
                   <span className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
-                  Проверяем...
+                  Тексеріліп жатыр...
                 </span>
               ) : (
-                "Проверить соответствие ТК РК"
+                "Қазақстан ЕК-ке сәйкестігін тексеру"
               )}
             </button>
           </form>
@@ -247,10 +247,10 @@ export default function NewContractPage() {
               )}
               <div>
                 <p className={`font-semibold ${validation.is_compliant ? "text-emerald-800" : "text-amber-800"}`}>
-                  {validation.is_compliant ? "Договор соответствует ТК РК" : "Обнаружены замечания"}
+                  {validation.is_compliant ? "Шарт Қазақстан ЕК-не сәйкес" : "Ескертпелер табылды"}
                 </p>
                 {!validation.is_compliant && (
-                  <p className="text-sm text-amber-700">Ознакомьтесь с предупреждениями ниже перед скачиванием</p>
+                  <p className="text-sm text-amber-700">Жүктеп алмас бұрын төмендегі ескертпелермен танысыңыз</p>
                 )}
               </div>
             </div>
@@ -258,7 +258,7 @@ export default function NewContractPage() {
             {/* Warnings */}
             {validation.warnings.length > 0 && (
               <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-                <h3 className="mb-3 text-sm font-semibold text-slate-900">Предупреждения</h3>
+                <h3 className="mb-3 text-sm font-semibold text-slate-900">Ескертпелер</h3>
                 <div className="space-y-2.5">
                   {validation.warnings.map((w, i) => (
                     <div
@@ -280,7 +280,7 @@ export default function NewContractPage() {
                             ? "bg-amber-100 text-amber-700"
                             : "bg-blue-100 text-blue-700"
                         }`}>
-                          {w.severity === "high" ? "Высокий" : w.severity === "medium" ? "Средний" : "Низкий"}
+                          {w.severity === "high" ? "Жоғары" : w.severity === "medium" ? "Орташа" : "Төмен"}
                         </span>
                       </div>
                       <p className="text-sm text-slate-700">{w.message}</p>
@@ -293,7 +293,7 @@ export default function NewContractPage() {
             {/* Recommendations */}
             {validation.recommendations.length > 0 && (
               <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-                <h3 className="mb-3 text-sm font-semibold text-slate-900">Рекомендации</h3>
+                <h3 className="mb-3 text-sm font-semibold text-slate-900">Ұсынымдар</h3>
                 <ul className="space-y-2">
                   {validation.recommendations.map((r, i) => (
                     <li key={i} className="flex items-start gap-2 text-sm text-slate-700">
@@ -313,7 +313,7 @@ export default function NewContractPage() {
                 onClick={() => setStep("form")}
                 className="flex-1 rounded-xl border border-slate-200 bg-white py-2.5 text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-50"
               >
-                Назад к форме
+                Форманы қайта өңдеу
               </button>
               <button
                 onClick={handleGenerate}
@@ -331,7 +331,7 @@ export default function NewContractPage() {
                       <path d="M10.75 2.75a.75.75 0 00-1.5 0v8.614L6.295 8.235a.75.75 0 10-1.09 1.03l4.25 4.5a.75.75 0 001.09 0l4.25-4.5a.75.75 0 00-1.09-1.03l-2.955 3.129V2.75z" />
                       <path d="M3.5 12.75a.75.75 0 00-1.5 0v2.5A2.75 2.75 0 004.75 18h10.5A2.75 2.75 0 0018 15.25v-2.5a.75.75 0 00-1.5 0v2.5c0 .69-.56 1.25-1.25 1.25H4.75c-.69 0-1.25-.56-1.25-1.25v-2.5z" />
                     </svg>
-                    Скачать .docx
+                    .docx жүктеу
                   </>
                 )}
               </button>
@@ -346,20 +346,20 @@ export default function NewContractPage() {
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clipRule="evenodd" />
               </svg>
             </div>
-            <p className="text-lg font-bold text-emerald-800">Договор сгенерирован!</p>
-            <p className="mt-1 text-sm text-emerald-600">Файл .docx загружен на ваше устройство</p>
+            <p className="text-lg font-bold text-emerald-800">Шарт дайындалды!</p>
+            <p className="mt-1 text-sm text-emerald-600">.docx файлы құрылғыңызға жүктелді</p>
             <div className="mt-6 flex gap-3">
               <button
                 onClick={() => { setForm(EMPTY_FORM); setValidation(null); setStep("form"); }}
                 className="rounded-xl border border-slate-200 bg-white px-5 py-2.5 text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-50"
               >
-                Создать ещё
+                Тағы құру
               </button>
               <button
                 onClick={() => router.push("/dashboard")}
                 className="rounded-xl bg-indigo-600 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-indigo-700"
               >
-                К списку договоров
+                Шарттар тізіміне
               </button>
             </div>
           </div>
